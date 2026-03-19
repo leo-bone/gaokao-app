@@ -64,7 +64,14 @@ jobs:
           ref: main
           sparse-checkout: |
             public
+            CNAME
           sparse-checkout-cone-mode: false
+          
+      - name: 复制 CNAME 到 public 目录
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME public/
+          fi
           
       - name: 设置 Git
         run: |

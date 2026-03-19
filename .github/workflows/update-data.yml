@@ -10,9 +10,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'data/**'
-      - 'scripts/**'
   # 每天 UTC 0 点（北京时间 8 点）强制更新
   schedule:
     - cron: '0 0 * * *'

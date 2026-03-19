@@ -1,21 +1,20 @@
 name: 更新水道数据
 
 on:
-  # 每10分钟运行一次
-  schedule:
-    - cron: '*/10 * * * *'
   # 手动触发
   workflow_dispatch:
   # 代码推送时运行
   push:
     branches:
       - main
-  # 每天 UTC 0 点（北京时间 8 点）强制更新
+  # 定时运行：每10分钟
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '*/10 * * * *'
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-data:
@@ -54,12 +53,18 @@ jobs:
   deploy:
     needs: update-data
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
         with:
-          ref: 'main'
+          ref: main
+          sparse-checkout: |
+            public
+          sparse-checkout-cone-mode: false
           
       - name: 设置 Git
         run: |
@@ -72,3 +77,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
           publish_branch: gh-pages
+          force_orphan: true

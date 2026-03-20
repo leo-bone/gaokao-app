@@ -126,18 +126,18 @@ def fetch_news_data():
         "notes": "严重拥堵，建议提前安排"
     }
     
-    # 霍尔木兹海峡 - 2026年3月危机
-    # 基于新闻: CNBC, Maritime News 2026年3月
-    # - 2026年3月18日: 伊朗吓跑大部分船舶，只有少量通过
-    # - 2026年3月9-11日: 每天仅1-2艘伊朗船只通过
-    # - 2026年3月15日: 交通量降为零
+    # 霍尔木兹海峡 - 2026年3月严重危机
+    # 基于新闻: IMO, CNBC, AGBI 2026年3月
+    # - IMO: 约3,200艘船舶被困在西侧
+    # - AGBI: 多达1,000艘等待进入
+    # - 航运量下降90%
     news_data["ormuz"] = {
-        "status": "严重受限",
-        "wait_hours": "不确定",
-        "daily_transit": "约1-5艘",
+        "status": "完全停滞",
+        "wait_hours": "未知",
+        "daily_transit": "约0-1艘",
         "level": "严重",
-        "source": "CNBC, Maritime News, Windward 2026年3月",
-        "notes": "地缘政治危机，船舶几乎无法通行，COSCO/Maersk/MSC已暂停预订"
+        "source": "IMO, CNBC, AGBI 2026年3月",
+        "notes": "约3,200艘船舶滞留(IMO数据)，航运量下降90%，COSCO/Maersk/MSC已暂停预订"
     }
     
     # 曼德海峡 - 红海区域
@@ -488,7 +488,7 @@ def update_geopolitical_data(waterways):
     geopolitics = {}
     
     ADVISORY = {
-        "ormuz": ("高度关注", "建议绕行或谨慎通行", "高"),
+        "ormuz": ("极高风险", "强烈建议绕行，3,200艘船舶滞留(IMO数据)", "极高"),
         "mandeb": ("高度关注", "建议绕行或谨慎通行", "高"),
         "malacca": ("适度关注", "保持常规警惕", "中"),
         "suez": ("适度关注", "保持常规警惕", "中"),

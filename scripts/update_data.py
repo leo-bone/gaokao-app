@@ -82,15 +82,17 @@ def fetch_news_data():
     
     # 苏伊士运河 - 基于搜索结果
     # - 2026年1月: 通航量比正常下降60%
-    # - 2026年3月4日: 正常通航，双向航行
-    # - 2026年1月15日: Maersk恢复苏伊士运河通航
+    # 苏伊士运河 - 2026年3月危机
+    # - 2026年3月12日: CMA CGM和Hapag-Lloyd再次暂停运河通行
+    # - 2026年1月: 短暂恢复后再次中断
+    # - 胡塞武装再次攻击商业航运
     news_data["suez"] = {
-        "status": "恢复中",
-        "wait_hours": "2-4",  # 比高峰期下降
-        "daily_transit": "约40艘",  # 以前约100艘，现在约40艘
-        "level": "轻微",
-        "source": "EgyptToday, Maritime News 2026年3月",
-        "notes": "通航量逐步恢复，但仍低于危机前水平60%"
+        "status": "再次中断",
+        "wait_hours": "不确定",
+        "daily_transit": "约20艘",
+        "level": "严重",
+        "source": "Maritime News, GCCA 2026年3月",
+        "notes": "CMA CGM/Hapag-Lloyd再次暂停通航，胡塞武装攻击加剧"
     }
     
     # 巴拿马运河 - 基于搜索结果
@@ -105,14 +107,17 @@ def fetch_news_data():
         "notes": "通航量反弹，预约系统运作正常"
     }
     
-    # 马六甲海峡 - 估算 (最繁忙海峡之一)
+    # 马六甲海峡 - 2026年3月
+    # - 2026年3月: 卫星信号干扰事件
+    # - ReCAAP警告海盗活动
+    # - 全球最繁忙海峡之一
     news_data["malacca"] = {
-        "status": "繁忙",
-        "wait_hours": "2-3",
+        "status": "正常",
+        "wait_hours": "1-2",
         "daily_transit": "约180艘",
         "level": "轻微",
-        "source": "估算 - 全球最繁忙海峡",
-        "notes": "全球最繁忙海峡之一"
+        "source": "EIA, ReCAAP 2026年3月",
+        "notes": "全球最繁忙海峡，有卫星信号干扰报告"
     }
     
     # 土耳其海峡 - 基于搜索结果
@@ -140,24 +145,29 @@ def fetch_news_data():
         "notes": "约3,200艘船舶滞留(IMO数据)，航运量下降90%，COSCO/Maersk/MSC已暂停预订"
     }
     
-    # 曼德海峡 - 红海区域
+    # 曼德海峡 - 2026年3月危机
+    # - 2026年3月16日: 交通大幅减少
+    # - MSC暂停该区域通行
+    # - 胡塞武装继续发出警告
     news_data["mandeb"] = {
-        "status": "受限",
-        "wait_hours": "1-2",
-        "daily_transit": "约30艘",
-        "level": "严重",
-        "source": "IMB 2025报告, 2026年3月",
-        "notes": "胡塞武装袭击风险，建议绕行"
+        "status": "严重受限",
+        "wait_hours": "不确定",
+        "daily_transit": "约15艘",
+        "level": "极其严重",
+        "source": "Windward, MSC 2026年3月",
+        "notes": "交通大幅减少，MSC暂停通行，胡塞武装威胁持续"
     }
     
-    # 好望角 - 绕行
+    # 好望角 - 2026年3月（绕行增加）
+    # - 苏伊士运河再次中断，大量船只绕行
+    # - 2026年3月: 绕行量仍然较高
     news_data["cape"] = {
-        "status": "正常",
-        "wait_hours": "1",
-        "daily_transit": "约80艘",
-        "level": "无",
-        "source": "估算",
-        "notes": "苏伊士运河替代路线"
+        "status": "繁忙",
+        "wait_hours": "1-2",
+        "daily_transit": "约120艘",
+        "level": "轻微",
+        "source": "Windward, Maritime News 2026年3月",
+        "notes": "苏伊士运河替代路线，绕行量增加"
     }
     
     # 丹麦海峡

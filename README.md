@@ -65,12 +65,30 @@ gaokao-app/
 ├── src/
 │   ├── App.tsx          # 主应用组件（包含所有数据和业务逻辑）
 │   ├── main.tsx         # 入口文件
-│   └── index.css        # 全局样式
-├── index.html           # HTML模板
+│   └── App.css          # 全局样式（Tailwind 指令 + 基础排版）
+├── index.html           # HTML 模板
 ├── package.json         # 项目配置
-├── tailwind.config.js   # Tailwind配置
-└── vite.config.ts       # Vite配置
+├── tailwind.config.js   # Tailwind 配置
+├── postcss.config.js    # PostCSS 配置
+├── vite.config.ts       # Vite 配置
+├── tsconfig.json        # TS 工程引用
+├── tsconfig.app.json    # 应用编译配置
+└── tsconfig.node.json   # 构建脚本编译配置
 ```
+
+## 部署
+
+仓库已配置 GitHub Actions（`.github/workflows/static.yml`）：推送到 `main`
+后自动执行 `npm ci && npm run build`，并把 `dist/` 发布到 GitHub Pages。
+
+> 注意：需先在仓库 Settings → Pages 中将 Source 设为 **GitHub Actions**，
+> 工作流才能完成发布步骤（构建步骤不受影响，始终会执行）。
+
+## 构建状态
+
+已本地验证通过：`tsc -b` 类型检查无误，`vite build` 产出
+`dist/index.html` + CSS(~21KB) + JS(~395KB)。
+（修复了专业库中 7 处重复键导致的 `TS1117` 编译错误。）
 
 ## 使用说明
 
